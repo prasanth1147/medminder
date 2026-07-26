@@ -49,7 +49,7 @@ export default function AuthPage({ onAuthed }: AuthPageProps) {
             <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/15 text-white ring-1 ring-white/25 backdrop-blur">
               <Pill className="h-7 w-7" />
             </div>
-            <h1 className="mt-4 font-display text-2xl font-extrabold text-white">MedMinder</h1>
+            <h1 className="mt-4 font-display text-2xl font-extrabold text-white">DoseNova</h1>
             <p className="mt-1 text-sm text-teal-50/85">Your daily medicine companion</p>
           </div>
 

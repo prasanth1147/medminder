@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply font-sans text-teal-900;
+    background-color: #f4faf9;
+    background-image:
+      radial-gradient(60% 50% at 100% 0%, rgba(120, 200, 195, 0.16) 0%, transparent 60%),
+      radial-gradient(50% 45% at 0% 100%, rgba(86, 166, 200, 0.14) 0%, transparent 55%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl bg-white shadow-card border border-teal-100/70;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-teal-500 px-4 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:bg-teal-600 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm font-medium text-teal-700 transition hover:bg-teal-50 active:scale-[0.98];
+  }
+  .input {
+    @apply w-full rounded-xl border border-teal-200 bg-white px-3.5 py-2.5 text-sm text-teal-900 placeholder:text-teal-400 shadow-soft outline-none transition focus:border-teal-400 focus:ring-2 focus:ring-teal-200;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-teal-600;
+  }
+}
+
+/* Permanently hide the platform's "Made in Bolt" badge and any iframe
+   overlay/badge it injects. These elements are added at runtime by the hosting
+   environment, not our app, and would otherwise float over the bottom-right
+   Add Medicine button on mobile. Targeted aggressively so they stay gone. */
+[data-ai-badge],
+.ai-badge,
+.ai-overlay,
+.ai-watermark,
+.bolt-badge,
+[class*="ai-badge" i],
+[class*="ai-overlay" i],
+[class*="ai-watermark" i],
+[id*="ai-badge" i],
+[id*="ai-overlay" i],
+[id*="bolt-badge" i],
+[class*="bolt-badge" i],
+/* The "Made in Bolt" bottom-right badge, by id/class text patterns */
+[id*="made-in-bolt" i],
+[class*="made-in-bolt" i],
+[class*="bolt-watermark" i],
+[id*="bolt-watermark" i],
+/* Any fixed/absolute element anchored to the bottom-right that looks like a
+   platform badge — covers dynamically-generated container names */
+a[href*="bolt.new"][target="_blank"],
+a[href*="bolt.new"]:not([href*="/api"]):not([href*="/auth"]) {
+  display: none !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Any iframe the platform injects as a badge/overlay. Our app never uses
+   iframes, so hiding all of them is safe and removes floating overlays. */
+iframe[title*="bolt" i],
+iframe[aria-label*="bolt" i],
+iframe[id*="bolt" i],
+iframe[class*="bolt" i],
+iframe[id*="ai-badge" i],
+iframe[class*="ai-badge" i],
+iframe[id*="badge" i],
+iframe[class*="badge" i] {
+  display: none !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+/* Make sure our floating action button always sits above injected overlays. */
+.fixed.bottom-5.right-5 {
+  z-index: 60 !important;
+}
+
+@layer base {
+  /* Respect notched/home-indicator devices so the FAB isn't clipped. */
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

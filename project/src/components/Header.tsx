@@ -22,7 +22,7 @@ export default function Header({ user, onAddMedicine, onSignOut }: HeaderProps) 
               <Pill className="h-6 w-6" />
             </div>
             <div>
-              <p className="font-display text-xl font-extrabold tracking-tight text-white">MedMinder</p>
+              <p className="font-display text-xl font-extrabold tracking-tight text-white">DoseNova</p>
               <p className="text-xs font-medium text-teal-50/80">Your daily medicine companion</p>
             </div>
           </div>
